@@ -16,6 +16,10 @@ def hello_world():
 
     return 'Hora atual: ' + str(hora_atual())
 
-computerName = os.environ['COMPUTERNAME']
-if __name__ == "__main__" and computerName == 'DESKTOP-91FQJAU':
-    app.run()
+
+try:
+    computerName = os.environ['COMPUTERNAME']
+    if __name__ == "__main__" and computerName == 'DESKTOP-91FQJAU':
+        app.run()
+except KeyError:
+    pass
