@@ -1,0 +1,9 @@
+Para atualizar o codigo no site pythonanywhere
+1) Verificar o caminho que esta sendo utilizado
+    https://www.pythonanywhere.com/user/felipecps/webapps/#tab_id_felipecps_pythonanywhere_com
+    Source code --> deve apontar para a pasta do código
+
+2) A configuração inicial para rodar o serviço está em /var/www/felipecps_pythonanywhere_com_wsgi.py
+
+3) Para instalar novas bibliotecas: pip3
+
