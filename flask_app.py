@@ -4,6 +4,8 @@ import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
+# from Services.SendEmail.sendEmail import send_email
+from Services.SendEmail.sendEmail import send_email
 
 BOOKS = [
     {
@@ -36,6 +38,12 @@ app.config.from_object(__name__)
 # enable CORS
 CORS(app, resources={r'/*': {'origins': '*'}})
 
+@app.route('/envia_email', methods=['POST'])
+def envia_email():
+    body = request.args.get('text', '')
+    checked_emails = request.args.get('checked', '').split(',')
+    for receiver in checked_emails:
+        send_email(body, receiver)
 
 def remove_book(book_id):
     for book in BOOKS:
