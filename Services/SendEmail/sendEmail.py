@@ -3,10 +3,10 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import json
-from os import getcwd
+from datetime import datetime
 
 
-def send_email(body, receiver):
+def send_email(body, subject, receiver):
     with open('Services//SendEMail//config.json') as f:
         data = json.load(f)
 
@@ -28,7 +28,7 @@ def send_email(body, receiver):
 
     msg['From'] = "contadeteste0@gmail.com"  # Type your own gmail address
     msg['To'] = dest  # Type your friend's mail address
-    msg['Subject'] = "Lembrete"  # Type the subject of your message
+    msg['Subject'] = subject  # Type the subject of your message
     msg.attach(MIMEText(message, 'plain'))
     server = smtplib.SMTP('smtp.gmail.com: 587')
     server.starttls()
