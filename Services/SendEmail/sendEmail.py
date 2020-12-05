@@ -9,11 +9,11 @@ from datetime import datetime
 
 
 def send_email(body, subject, receiver):
-    computerName = os.environ['COMPUTERNAME']
-    path_total = '/home/felipecps/Git/appDeTeste/Services/SendEmail/config.json'
 
-    if computerName == 'DESKTOP-91FQJAU':
+    if os.name == 'nt':
         path_total = 'Services//SendEMail//config.json'
+    else:
+        path_total = '/home/felipecps/Git/appDeTeste/Services/SendEmail/config.json'
 
     with open(path_total, 'r') as f:
         data = json.load(f)
