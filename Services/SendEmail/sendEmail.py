@@ -1,4 +1,5 @@
 import math
+import os
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -6,14 +7,21 @@ import json
 from datetime import datetime
 
 
+
 def send_email(body, subject, receiver):
-    with open('Services//SendEMail//config.json') as f:
+    computerName = os.environ['COMPUTERNAME']
+    path_total = '/home/felipecps/Git/appDeTeste/Services/SendEmail/config.json'
+
+    if computerName == 'DESKTOP-91FQJAU':
+        path_total = 'Services//SendEMail//config.json'
+
+    with open(path_total, 'r') as f:
         data = json.load(f)
 
     message = body  # Type your message
     msg = MIMEMultipart()
-
-    password = data['pw'] + str(10 - 8 + 5 - 7) + str(8 % 12) + str(int(math.pow(36, 1 / 2))) + str(2 + 2)
+    # password = data['pw'] + str(10 - 8 + 5 - 7) + str(8 % 12) + str(int(math.pow(36, 1 / 2))) + str(2 + 2)
+    password = 'gixggorefcutddqq'
 
     if receiver == "felipePessoal":
         dest = data['eu'] + data['xavier'] + '@' + data['gmail']
